@@ -1,0 +1,246 @@
+<?php
+/*
+Plugin Name: Google Font Manager
+Plugin URI: http://butlerconsulting.com/work/plugins/google-font-manager/
+Description: Adds a library of seletced Google Fonts to your WordPress site with a backend font selection and preview system.
+Version: 1.0
+Author: Thomas S. Butler
+Author URI: http://butlerconsulting.com/
+Text Domain: google-font-manager
+*/
+
+/*
+	* @author Thomas S. Butler (email : tom@opportunex.com)
+    * @copyright 2013-2014 All Rights Reserved.  Google Font Manager - A WordPress Plugin.
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    To get a copy of the GNU General Public License, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    Or, visit <http://www.gnu.org/licenses/>.
+*/
+
+//exit if accessed directly
+if(!defined('ABSPATH')) exit;
+
+//create text domain and defaults
+function googlefontmgr_textdomain() {
+    //set text domain for translations
+	load_plugin_textdomain('google-font-manager', false, 'google-font-manager');
+}
+add_action('init', 'googlefontmgr_textdomain');
+
+$fonsterpluginurl = WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)).'/';
+$fonsterpluginpath = WP_PLUGIN_DIR . '/' . dirname(plugin_basename(__FILE__)).'/';
+
+//register plugin scripts
+function wp_googlefontmgr_admin_init() {
+    wp_register_script('jquery_ui_files', plugins_url( 'js/jquery.autocomplete.js', __FILE__ ));
+    wp_register_script('wp_googlefontmgr_script', plugins_url( 'js/jquery.pluginscript.js', __FILE__ ), array( 'wp-color-picker' ), false, true);
+    wp_register_script('wpgfm-radiobutton', plugins_url( 'js/jquery.radiobutton.js', __FILE__ ));
+    wp_register_script('wpgfm-scrollto-js', plugins_url( 'js/jquery.scrollTo.min.js', __FILE__ ));
+    wp_register_script('wpgfm-localscroll-js', plugins_url( 'js/jquery.localScroll.min.js', __FILE__ ));
+    wp_register_script('wpgfm-easing-js', plugins_url( 'js/jquery.easing.min.js', __FILE__ ));
+    wp_register_script('wpgfm-spinbox-js', plugins_url( 'js/spinbox.js', __FILE__ ));
+    wp_register_style('jquery_ui_styles', plugins_url( 'css/jquery.ui.min.css', __FILE__ ));
+    wp_register_style('wp_googlefontmgr_styles', plugins_url( 'css/style.css', __FILE__ ));
+}
+add_action('admin_init', 'wp_googlefontmgr_admin_init');
+
+//add template designer page to custom post type
+function wp_googlefontmgr_admin() {
+    $page_hook_suffix = add_options_page('Google Font Manager', 'Google Font Manager', 'manage_options', 'google-font-manager', 'wp_googlefontmgr_plugin_options');
+    add_action('admin_print_scripts-' . $page_hook_suffix, 'wp_googlefontmgr_scripts');
+}
+add_action('admin_menu' , 'wp_googlefontmgr_admin');
+
+//enqueue the scripts files
+function wp_googlefontmgr_scripts() {
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('jquery_ui_files');
+    wp_enqueue_script('wp_googlefontmgr_script');
+    wp_enqueue_script('wpgfm-radiobutton');
+    wp_enqueue_script('wpgfm-scrollto-js');
+    wp_enqueue_script('wpgfm-localscroll-js');
+    wp_enqueue_script('wpgfm-spinbox-js');
+    wp_enqueue_script('wpgfm-easing-js');
+    wp_enqueue_style('jquery_ui_styles');
+    wp_enqueue_style('wp_googlefontmgr_styles');
+    wp_enqueue_style( 'wp-color-picker' );
+}
+
+//launch the font selector
+function wp_googlefontmgr_plugin_options(){
+    require_once dirname( __FILE__ ) .'/wireframe.php';
+}
+
+//validate google api key
+function wp_googlefontmgr_key_callback() {
+    $wp_googlefontmgr_apikey = intval( $_POST['wp_googlefontmgr_apikey'] );
+	require_once dirname( __FILE__ ) .'/ajax/set_google_api.php'; die(); 
+}
+add_action('wp_ajax_wp_googlefontmgr_key', 'wp_googlefontmgr_key_callback');
+
+//get the google fonts file
+function wp_googlefontmgr_getfonts_callback() {
+    require_once dirname( __FILE__ ) .'/ajax/google_fonts.php'; die(); 
+}
+add_action('wp_ajax_wp_googlefontmgr_getfonts', 'wp_googlefontmgr_getfonts_callback');
+
+//set google font selection
+function wp_googlefontmgr_setfonts_callback() {
+    $font = intval( $_POST['font'] );
+	require_once dirname( __FILE__ ) .'/ajax/set_google_font.php'; die(); 
+}
+add_action('wp_ajax_wp_googlefontmgr_setfonts', 'wp_googlefontmgr_setfonts_callback');
+
+//remove google font selection
+function wp_googlefontmgr_killfonts_callback() {
+    $font = intval( $_POST['font'] );
+    $remove = intval( $_POST['remove'] );
+	require_once dirname( __FILE__ ) .'/ajax/set_google_font.php'; die(); 
+}
+add_action('wp_ajax_wp_googlefontmgr_killfonts', 'wp_googlefontmgr_killfonts_callback');
+
+//get font inspector properties
+function wp_googlefontmgr_inspector_callback() {
+    $font = intval( $_POST['font'] );
+    require_once dirname( __FILE__ ) .'/ajax/get_font_data.php'; die(); 
+}
+add_action('wp_ajax_wp_googlefontmgr_inspector', 'wp_googlefontmgr_inspector_callback');
+
+//get font inspector properties
+function wp_googlefontmgr_setoptions_callback() {
+    $val = intval( $_POST['val'] );
+    $element = intval( $_POST['element'] );
+    require_once dirname( __FILE__ ) .'/ajax/set_style_options.php'; die(); 
+}
+add_action('wp_ajax_wp_googlefontmgr_setoptions', 'wp_googlefontmgr_setoptions_callback');
+
+//get font inspector properties
+function wp_googlefontmgr_setstyle_callback() {
+    $stylesheet = intval( $_POST['stylesheet'] );
+    require_once dirname( __FILE__ ) .'/ajax/set_style_options.php'; die(); 
+}
+add_action('wp_ajax_wp_googlefontmgr_setstyle', 'wp_googlefontmgr_setstyle_callback');
+
+//add font selection to TinyMCE
+function myformatTinyMCE($tinyMce) {
+    
+    //get option settings
+    $editorfonts = get_option("wp_googlefontmgr_editorfonts", 1);
+    $websafefonts = get_option("wp_googlefontmgr_safefonts", 1);
+    
+    if($editorfonts) {
+        
+        if($websafefonts) {  
+            //get websafefont list
+            $safefontlist = 'Arial=Arial,Helvetica,sans-serif,Arial Black=Arial Black,Gadget,sans-serif,Comic Sans=Comic Sans MS,Comic Sans MS,cursive,Courier New=Courier New,Courier New,Courier,monospace,Georgia=Georgia,Georgia,serif,';
+            $safefontlist .= 'Impact=Impact,Charcoal,sans-serif,Lucida Console=Lucida Console,Monaco,monospace,Lucida Sans Unicode=Lucida Sans Unicode,Lucida Grande,sans-serif,Palatino Linotype=Palatino Linotype,Book Antiqua,Palatino,serif,';
+            $safefontlist .= 'Tahoma=Tahoma,Geneva,sans-serif,Times New Roman=Times New Roman,Times,serif,Trebuchet MS=Trebuchet MS,Helvetica,sans-serif,Verdana=Verdana,Geneva,sans-serif,Gill Sans=Gill Sans,Geneva,sans-serif,';
+        }
+        
+        $fontdata = get_option("wp_googlefontmgr_fonts");
+        //get the google font list
+        if($fontdata) {
+            //load fonts for use in plugin
+            $myfontlist = "";
+            $mycsslist = "";
+            $array = explode(",", $fontdata);
+            foreach($array as $value) {
+                $myfontlist .=sprintf(_('%s=%s,'), $value, $value);
+                $mycsslist .= "http://fonts.googleapis.com/css?family=" .urlencode($value). ",";
+            }
+        }
+        
+        //check if websafe fonts are to be loaded
+        if($websafefonts){
+            $myfontlist = $myfontlist.$safefontlist;
+        }
+        
+        $tinyMce['remove_linebreaks']=false;
+        $tinyMce['gecko_spellcheck']=false;
+        $tinyMce['keep_styles']=true;
+        $tinyMce['accessibility_focus']=true;
+        $tinyMce['tabfocus_elements']='major-publishing-actions';
+        $tinyMce['media_strict']=false;
+        $tinyMce['paste_remove_styles']=false;
+        $tinyMce['paste_remove_spans']=false;
+        $tinyMce['paste_strip_class_attributes']='none';
+        $tinyMce['paste_text_use_dialog']=true;
+        $tinyMce['wpeditimage_disable_captions']=true;
+        $tinyMce['plugins']='inlinepopups,tabfocus,paste,media,fullscreen,wordpress,wpeditimage,wpgallery,wplink,wpdialogs,wpfullscreen';
+        $tinyMce['content_css']=get_template_directory_uri() . "/editor-style.css";
+        $tinyMce['wpautop']=true;
+        $tinyMce['apply_source_formatting']=false;
+        $tinyMce['theme_advanced_buttons1']='formatselect,fontselect,forecolor,|,bold,italic,underline,|,bullist,numlist,blockquote,|,justifyleft,justifycenter,justifyright,justifyfull,|,link,unlink,|,wp_fullscreen,wp_adv';
+        $tinyMce['theme_advanced_buttons2']='pastetext,pasteword,removeformat,|,charmap,|,outdent,indent,|,undo,redo';
+        $tinyMce['theme_advanced_buttons3']='';
+        $tinyMce['theme_advanced_buttons4']='';
+        $tinyMce['theme_advanced_fonts']=$myfontlist;
+        $tinyMce['content_css']=$mycsslist;
+        return $tinyMce; 
+    }
+    
+}
+//check if editor fonts are enabled, add filter if they are
+$editorfonts = get_option("wp_googlefontmgr_editorfonts", 1);    
+if($editorfonts) { add_filter('tiny_mce_before_init', 'myformatTinyMCE'); }
+
+//add selected fonts on public side
+function wp_googlefontmgr_setscripts(){
+    //load font styles
+    $fontdata = get_option("wp_googlefontmgr_fonts");
+    if($fontdata) {
+        //load fonts for use in plugin
+        $fontselectdrop = "";
+        $array = explode(",", $fontdata);
+        foreach($array as $value) {
+            $cssname = "google-font-manager-" .strtolower(str_replace(" ", "-", $value));
+            wp_enqueue_style($cssname,'http://fonts.googleapis.com/css?family='.$value);
+            $fontselectdrop .='<li class="' .strtolower(str_replace(" ", "-", $value)). '" style="font-family: ' .$value. ';">' .$value. '</li>';
+        }
+    }
+}
+add_action('wp_enqueue_scripts', 'wp_googlefontmgr_setscripts');
+add_action('admin_enqueue_scripts', 'wp_googlefontmgr_setscripts');
+
+//add styles into template header
+function wp_googlefontmgr_headerstyles(){
+    
+    //get option settings
+    $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);    
+    
+    if($styledefaults) {
+        $stylesheet = get_option("wp_googlefontmgr_styleopts", "");    
+        if($styledefaults != "") {
+            echo '<style id="google-font-mgr-style">';
+            echo stripslashes($stylesheet);
+            echo '</style>';
+        }
+    }
+    
+}
+add_action('wp_head', 'wp_googlefontmgr_headerstyles');
+
+//register deactivation hook
+function wp_googlefontmgr_deactivate(){
+    delete_option("wp_googlefontmgr_fonts");
+    delete_option("wp_googlefontmgr_apikey");
+    delete_option("wp_googlefontmgr_safefonts");
+    delete_option("wp_googlefontmgr_editorfonts");
+    delete_option("wp_googlefontmgr_styledefaults");
+    delete_option("wp_googlefontmgr_styleopts");
+}
+register_deactivation_hook( dirname( __FILE__ ) .'/google-font-manager.php', 'wp_googlefontmgr_deactivate' );
+
+
+?>
