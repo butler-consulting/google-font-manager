@@ -12,7 +12,7 @@ Easily add and manage Google fonts to your WordPress website. With multiple use 
 
 == Description ==
 
-This plugin was written to help you quickly and easily add Google fonts to your WordPress website. It was designed with both the experienced programmer and the novice WordPress user in mind. With minimal overhead, it will not add any unnecessary "bloat" to your site, adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding Google fonts to your website.
+This plugin was written to help you quickly and easily add Google fonts to your WordPress website. It was designed with both the regular and advanced WordPress user in mind. With minimal overhead, it will not add any unnecessary "bloat" to your site, adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding Google fonts to your website.
 
 Some of the features:
 
