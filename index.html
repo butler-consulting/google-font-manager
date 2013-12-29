@@ -31,37 +31,107 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <p>=== Google Font Manager ===</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Contributors: Thomas S. Butler - <a href="http://butlerconsulting.com/">http://butlerconsulting.com/</a>
+Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet
+Requires at least: 3.1
+Tested up to: 3.8
+Stable tag: 1.0
+License: GPLv3 (or higher)</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>Easily add and manage Google fonts to your WordPress website. With multiple use options, this plugin is perfect for programmers, designers and general users alike.</p>
+
+<p>== Description ==</p>
+
+<p>This plugin was written to help you quickly and easily add Google fonts to your WordPress website. It was designed with both the experienced programmer and the novice WordPress user in mind. With minimal overhead, it will not add any unnecessary "bloat" to your site, adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding Google fonts to your website.</p>
+
+<p>Some of the features:</p>
+
+<ul>
+<li>Add as many Google Fonts as you want to your site</li>
+<li>Full integration with Google Fonts API</li>
+<li>Automatically adds fonts to Visual Editor (tinyMCE)</li>
+<li>Optionally adds "Web Safe Fonts" to Visual Editor </li>
+<li>Customize style sheet to override theme default</li>
+<li>AJAX-powered, no screen refreshes! </li>
+<li>Clean and fresh UI and UX design</li>
+<li>Fully responsive Admin (as of WP 3.8)</li>
+<li>Light-Weight turn on and off options</li>
+<li>Resources only loaded in WP Admin when needed</li>
+</ul><p>If you have any problems with the plugin after reading the FAQ, Other Notes, etc. please visit the <a href="http://wordpress.org/support/plugin/google-font-manager/">support forums</a>.</p>
+
+<p>= Translated Languages Available =</p>
+
+<p>Sorry, no translations available at this time.  We will be working on that for the next upgrade. If you'd like to contribute a translation, please let us know on the <a href="http://wordpress.org/support/plugin/google-font-manager/">support forums</a>.</p>
+
+<ul>
+<li>American English - Default... Also supports Canadian, British, Australian and a few others (that's a joke)</li>
+</ul><p>== Installation ==</p>
+
+<ol>
+<li><p>Upload this plugin to the <code>/wp-content/plugins/</code> directory and unzip it, or simply upload the zip file within your wordpress installation.</p></li>
+<li><p>Activate the plugin through the 'Plugins' menu in WordPress.</p></li>
+<li><p>Click on "Google Font Manager" in your admin toolbar, located under the settings tab.</p></li>
+<li><p>Follow the link and instructions provided to get your Google Fonts API key, add your API key and update settings.</p></li>
+<li><p>Start previewing and adding fonts to your site.  Happy Typography!</p></li>
+</ol><p>== Notes &amp; Known Issues ==</p>
+
+<p>This plugin has been developed for modern browsers and makes liberal use of HTML5 data attributes and may not function as intended in older web browsers... YOU HAVE BEEN WARNED! As this plugin was developed for internal training purposes to teach new programmers how to write plugins "our way", we have full documentation available.  Although a languages folder exists in the plugin (google-font-manager/lang) no translations have been added to this version.  As this plugin is used as a training tool, we are also utilizing it for producing an instructional video on how to add translations to your WordPress plugins.  Once that tutorial is complete, we will update this plugin with some added translations.  Finally, and along the same lines, some of the "responsivness" in the UI may seem lacking in this initial version.  This is for the same reason.  We will be adding a tutorial on how to add responsive conditionals and will update the plugin when that is complete.  In the meantime, have fun with the plugin and let us know what you think!</p>
+
+<p>== Screenshots ==</p>
+
+<ol>
+<li><p>Preview all Google fonts without leaving the WP Admin.</p></li>
+<li><p>Easily add and remove Google Fonts to your WordPress Site.</p></li>
+<li><p>Automatic integration with the Visual Editor (tinyMCE - optional)</p></li>
+<li><p>Build and customize your own CSS style sheet (no programming required).</p></li>
+<li><p>Fully documented with lots of information.</p></li>
+</ol><p>== Frequently Asked Questions ==</p>
+
+<p>= How do I get a Google API key? =
+You will need a Google API key to make use of this plugin. Your key is free and easy to get. However, many people get confused on this.  It's really quite simple: </p>
+
+<pre><code>1) logged in to your Gmail account; 
+2) go here https://cloud.google.com/console; 
+3) create a project (example: "my google fonts");
+5) under "APIs &amp; auth" click APIs and add "Web Fonts Developer API";
+4) under "APIs &amp; auth" click credentials (create new key);
+5) copy the API key under "Key for browser applications", that's it.
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>= Why don't my changes appear in my site? =
+Once you have selected fonts and added them to your site, you must either add them to your style sheet manually, apply them within your blog post or pages by using the visual editor. Also, make sure you have enabled the "Style Defaults" and apply them to your site elements. </p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<p>= I have followed the instructions above and my fonts still aren't working. What can I do? =
+If you have done all of the above and you still can't see any changes, you should turn on the "!important" CSS constructor, rebuild your style sheet and refresh your page.  Also, make sure to delete your cache and refresh your page - particularly if you are using a cache plugin.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>= I am a programmer/designer and I don't need any add-ons. Can I turn them off? =
+Yes.  By default, we assume that you don't know how to code or do not want to.  So, font selection in the visual editor along with web safe fonts is enabled by default.  This plugin allows you to turn off all of these added utilities for applying fonts, under the settings tab.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>= I really like how this plugin works and looks. Are you for hire? =
+Yes.  We make a living by doing this sort of thing.  You can learn more about us and what we can do for you by visiting our home page at: <a href="http://butlerconsulting.com">http://butlerconsulting.com</a>.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>For further instructions and step-by-step instructions you can go here: <a href="http://plugins.butlerconsulting.com/docs/google-font-manager/">http://plugins.butlerconsulting.com/docs/google-font-manager/</a>.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>== Credits and include files ==</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Of course a big "shout out" must be given to Matt Mullenweg and the WordPress team for making the world possible! This plugin makes use of jQuery (jquery.com) along with a few additional jQuery libraries that have been written by others.  Each of these may have their own licenses but all are "Open Source". Some of the icons were used from Windows Icons <a href="http://modernuiicons.com/">Modern UI Icons</a>. Additional resources:</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>jQuery autocomplete provided by <a href="http://jqueryui.com">http://jqueryui.com</a>, 
+jQuery Easing v1.3 - <a href="http://gsgd.co.uk/sandbox/jquery/easing/">http://gsgd.co.uk/sandbox/jquery/easing/</a>, 
+A modified version of "tipsy tip roller" by jason frame [<a href="mailto:jason@onehackoranother.com">jason@onehackoranother.com</a>] was added to the main jQuery file,
+jQuery.LocalScroll and jQuery.ScrollTo by Ariel Flesler - aflesler(at)gmail(dot)com | <a href="http://flesler.blogspot.com">http://flesler.blogspot.com</a>, 
+jQuery custom radiobuttons by Tomasz Wójcik (bthlabs.pl) <a href="mailto:labs@tomekwojcik.pl">labs@tomekwojcik.pl</a> 
+SpinBox JavaScript widget //code.stephenmorley.org <a href="http://code.stephenmorley.org/javascript/spin-box-widget/">http://code.stephenmorley.org/javascript/spin-box-widget/</a></p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>== Changelog ==</p>
+
+<p>= 1.0 =</p>
+
+<ul>
+<li>Initial release December 28th 2013, Nothing to see here. These are not the droids we're looking for... move along.</li>
+</ul>
       </section>
     </div>
 
