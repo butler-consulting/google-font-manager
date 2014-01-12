@@ -135,6 +135,16 @@
         background: none repeat scroll 0 0 rgba(0, 0, 0, 0.95);
         color: #FFFFFF !important;
     }
+    .closepanel {
+        float: right;
+        font-family: Arial,Helvetica,sans-serif !important;
+        font-weight: bold;
+        font-size: 12px !important;
+        cursor: pointer;
+    }
+    .closepanel:hover {
+        text-decoration: underline;
+    }
     </style>
 	<title>Google Font Manager (Font Viewer)</title>
 </head>
@@ -144,7 +154,7 @@
 
     <div class="container" style="width: 600px">
         
-        <p class="heading"><?php echo urldecode($fontface); ?><?php if(isset($_GET["variant"])) { echo ":" .urldecode($variant); } ?></p>
+        <p class="heading"><?php echo urldecode($fontface); ?><?php if(isset($_GET["variant"])) { echo ":" .urldecode($variant); } ?><span class="closepanel" onclick="window.parent.closePanel();">close panel</span></p>
         
         <h1>Grumpy wizards make toxic brew for the evil Queen and Jack.</h1>
         

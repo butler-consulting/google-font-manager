@@ -79,6 +79,10 @@ a.actionbtn {
     position: relative;
     width: 100%;
 }
+#temporary_link_info, #globalgoogleapi {
+    line-height: normal !important;
+    padding: 0px 48px;
+}
 /* Google Font Manager */
 #fonts_container {
     min-height: 475px; 
@@ -227,8 +231,9 @@ p.subdued {
 .ui-autocomplete {
     max-height: 200px !important;
     list-style-image: none !important;
-    overflow-y: auto;
+    overflow: scroll;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 .ui-menu .ui-menu-item {
     list-style-image: none !important;
@@ -277,8 +282,9 @@ p.subdued {
 #selector_tab, #preview_tab, #docs_tab {
     max-height: 675px;
     min-height: 425px;
-    overflow: auto;
-    overflow-x: hidden !important;
+    overflow: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 #selectedfonts p, p.note, #docs_tab p {
     padding-left: 12px;
@@ -808,7 +814,9 @@ span.advancefont.disabled, span.advancefont.disabled:hover {
     border-radius: 5px;
     z-index: 9998000 !important;
     max-height: 200px;
-    overflow: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 .fontSelectUl li {
 	height: 24px;

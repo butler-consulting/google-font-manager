@@ -48,6 +48,30 @@ if(!defined('ABSPATH')) exit;
             
             <?php include dirname( __FILE__ ) .'/ajax/google_fonts.php'; ?>
             
+            <?php if(!$google_api_key || !googlefontmgr_check_api($google_api_key)): ?>
+            <div id="temporary_link_info">
+                        
+                <p>
+                    The Google Font Manager plugin for WordPress was created as an instructional tool for new team members at <a href="http://butlerconsulting.com/" target="_blank">ButlerConsulting.com</a>. 
+                    A primary reason for its development was to demonstrate "best practices" for how we want new plugins to be built. For this reason, it is over documented (to say the least) and provides a great deal
+                    of useful information on how to build plugins for WordPress. If you are interested in learning more, you can visit these links:  
+                    
+                    <br /><br />
+                    
+                    <a href="http://butlerconsulting.com/work/plugins/google-font-manager/" target="_blank"><strong>Blog about the plugin (home page)</strong></a>,
+                    <a href="http://plugins.butlerconsulting.com/google-font-manager/" target="_blank"><strong>Behind the scenes (how it was made)</strong></a>,
+                    <a href="http://plugins.butlerconsulting.com/docs/google-font-manager/" target="_blank"><strong>Technical Documentation</strong></a>,
+                    <a href="http://wordpress.org/plugins/google-font-manager/" target="_blank"><strong>WordPress Repository</strong></a>,
+                    <a href="http://wordpress.org/support/plugin/google-font-manager/" target="_blank"><strong>WordPress Support Forum</strong></a>,
+                    <a href="https://github.com/butler-consulting/google-font-manager/" target="_blank"><strong>GitHub Repository</strong></a>,
+                    <a href="https://developers.google.com/fonts/docs/developer_api/" target="_blank"><strong>Google Font API</strong></a>
+                </p>
+                
+            </div>
+            
+            <div class="clear"></div>
+            <?php endif; ?>
+            
         </div>
     
     </div>

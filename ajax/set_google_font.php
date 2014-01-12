@@ -98,7 +98,7 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
         echo 'var fontitem = \'<div id="listfont_' .strtolower(str_replace(" ", "-", $font)). '" class="fontlist-item" data-font="' .$font. '"><p class="heading" data-font="' .$font. '">' .urldecode($font). '<span class="delfont"></span></p><h2 style=\"font-family:' .$font. '\">Grumpy wizards make toxic brew for the evil Queen and Jack.</h2></div>\';';
         echo 'var listitem = "<span class=\'fonlist ' .strtolower(str_replace(" ", "-", $font)). '\' data-font=\'' .$font. '\'>' .$font. '<span class=\'delfont\'></span></span>";'; 
         echo 'var formitem = "<option value=\'' .$font. '\'>' .$font. '</option>";';
-        echo 'var formelem = "<option value=font-family:\'' .$font. '\'>' .$font. '</option>";';
+        echo 'var formelem = "<option value=\"font-family:\'' .$font. '\'\">' .$font. '</option>";';
         echo 'if(!jQuery("#' .$cssname. '-css").length) { jQuery("head").append(stylesheet); }';
         echo 'jQuery("#myfontlist").prepend(fontitem);';
         echo 'jQuery("#thefontlist").append(listitem);';
@@ -152,6 +152,6 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
     ?>
     //clear font finder value
     jQuery("#fontfinder").val("");
-
+    setCurrentStyles();
     
 </script>

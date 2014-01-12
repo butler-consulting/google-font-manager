@@ -14,13 +14,13 @@
 </h2>
 
 <p>
-    Currently, <a href="http://www.google.com/fonts" target="_blank">Google fonts</a> currently has <span class='countfonts'>0</span> fonts available for both public and commercial use. You may utilize them in your websites and other 
+    Currently, <a href="http://www.google.com/fonts" target="_blank">Google fonts</a> has <span class='countfonts'>0</span> fonts available for both public and commercial use. You may utilize them in your websites and other 
     applications. Using these fonts can extend your website designs, enabling you to achieve a unique look and feel to your site. After all "a picture is worth 1000 words" and typography allows you to paint pictures with words.
 </p>
 
 <p>
-    This plugin was written to help you quickly and easily add Google fonts to your WordPress website. It was designed with both the experienced programmer and the novice WordPress user in mind. With minimal overhead, it will not add 
-    any unnecessary "bloat" to your site, adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a 
+    This plugin was written to help you quickly and easily add Google fonts to your WordPress website. It was designed with both the experienced programmer and standard WordPress users in mind. With minimal overhead, it will not add 
+    any unnecessary "bloat" to your site; adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a 
     child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding Google 
     fonts to your website.
 </p>
@@ -52,12 +52,13 @@
 
 <p class="indent">
     For the average WordPress user, we have incorporated two ways for you to use the Google fonts you select in your website. The first way is turned on by default. The second way must be enabled, but gives you a great deal of modular control over 
-    how your newly embedded fonts are applied. First, you must add one (or many) of the <span class='countfonts'>0</span> Google fonts to your site. Adding fonts is quite simple. You start by typing the name of the font you want in the "Google Font 
-    Selector" form field (located in the upper-right corner "meta box") and select it from the drop-down. This adds the font to your site by linking the Google font style sheet in your website header (no programming required). 
+    how your newly embedded fonts are applied. First, you must add one, or many, of the <span class='countfonts'>0</span> Google fonts to your site. Adding fonts is quite simple. However, be sure to not add too many as each one will add  some loading 
+    time to your site. No more than 5 fonts is recommended You start by typing the name of the font you want in the "Google Font Selector" form field (located in the upper-right corner "meta box") and select it from the drop-down. This adds the font 
+    to your site by linking the Google font style sheet in your website header (no programming required). 
 </p>
 
 <p class="indent">
-    Once your fonts have been selected, by default they are automagically added to the WordPress Visual Editor (tinyMCE). This is the same WYSIWYG (what you see is what you get) editor that you are probably familiar with for creating your content in 
+    Once your fonts have been selected, by default they are "automagically"  added to the WordPress Visual Editor (tinyMCE). This is the same WYSIWYG (what you see is what you get) editor that you are probably familiar with for creating your content in 
     posts and pages. The only difference is that you will now find a "Font Family" option in the editor added by the plugin (you may turn off this feature if you want). You can apply any selected font to your content by highlighting the text selection 
     and choosing the font you want to apply form the font family dropdown. 
 </p>

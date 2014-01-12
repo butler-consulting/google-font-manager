@@ -3,9 +3,9 @@ Google Font Manager
 
 Easily add and manage Google fonts to your WordPress website. With multiple use options, this plugin is perfect for programmers, designers and general users alike.
 
-**The Google Font Manager plugin was written to help you quickly and easily add Google fonts to your WordPress website. Designed for both regular and advanced WordPress users in mind.** 
+**The Google Font Manager plugin was written to help you quickly and easily add Google fonts to your WordPress website. Designed for both regular and advanced WordPress users in mind, this is the perfect plugin to expand your website typography.** 
 
-With minimal overhead, it will not add any unnecessary "bloat" to your site, adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding Google fonts to your website.
+With minimal overhead, it will not add any unnecessary "bloat" to your site; adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding and managing Google fonts.
 
 **Some of the features:**
 
@@ -17,7 +17,8 @@ With minimal overhead, it will not add any unnecessary "bloat" to your site, add
 * AJAX-powered, no screen refreshes! 
 * Clean and fresh UI and UX design
 * Fully responsive Admin (as of WP 3.8)
-* Light-Weight turn on and off options
+* Light-Weight... turn on and off options
 * Resources only loaded in WP Admin when needed
+* Multisite compatible with single API key
 
-Download it for free from the WordPress plugin repository here: http://wordpress.org/plugins/google-font-manager/
+Download it for free from the WordPress plugin repository here: http://wordpress.org/plugins/google-font-manager/. Contributions, revisions, tweaks and critiques are always welcome!

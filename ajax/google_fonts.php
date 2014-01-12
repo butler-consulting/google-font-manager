@@ -15,17 +15,16 @@ $fontcount = 0;
 $fontdata = get_option("wp_googlefontmgr_fonts");
 
 ?>
-                    
-    
+                        
 <?php 
     
     $errors = false;
-    $google_api_key = get_option('wp_googlefontmgr_apikey');
+    $google_api_key = wp_googlefonts_getTheKey();
     
     //error checking - validate apikey
     if(!$google_api_key) { 
         $errors = true;
-        echo "<h1>In order to use this option, you are going to need a Google API Key. 
+        echo "<h1>In order to make use of this plugin, you are going to need a Google API Key. 
                 Click on the settings icon on the top toolbar to get and enter your Google API credentials.</h1>"; 
     } else {
         
@@ -74,7 +73,20 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
 		echo "<b>Error: Can not connect to Google Web Fonts API, please double check your API Key and Try Again!</b>";
 	} else {
 	   
-   //echo  get_option("wp_googlefontmgr_styleopts", "");     
+       
+    //load font styles
+    $fontselectdrop = "";
+    $fontdata = get_option("wp_googlefontmgr_fonts");
+    if($fontdata) {
+        //load fonts for use in plugin
+        $array = explode(",", $fontdata);
+        foreach($array as $value) {
+            $cssname = "google-font-manager-" .strtolower(str_replace(" ", "-", $value));
+            wp_enqueue_style($cssname,'http://fonts.googleapis.com/css?family='.$value);
+            $fontselectdrop .='<li class="' .strtolower(str_replace(" ", "-", $value)). '" style="font-family: ' .$value. ';">' .$value. '</li>';
+        }
+    }
+    //echo  get_option("wp_googlefontmgr_styleopts", "");     
        
 ?>
 
@@ -159,6 +171,7 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
             <?php require_once dirname( __FILE__ ) .'/plugin_docs.php'; ?>
             
         </div>
+        
     </div>
     <iframe id="testpage" src="<?php echo plugins_url( '/font_testpage.php' , plugin_basename(__FILE__) ); ?>" width="0" height="0"></iframe>
     
@@ -170,7 +183,7 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
     
     //remote add font function
     function addTheFont(font){
-        <?php if(!$google_api_key): ?>
+        <?php if(!$google_api_key || !googlefontmgr_check_api($google_api_key)): ?>
         //if google apikey is not set
         jQuery("#fontfinder").prop("disabled",true);
         jQuery("#rusureok #confirm").attr("data-action", "closeme");
@@ -196,6 +209,8 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
             jQuery("#fontviewer").animate({right:'-720px'}, {queue: false, duration: 800});
             jQuery("#fontviewer").removeClass("open");
         }, 500);
+        jQuery("#mainbar_apply").removeClass("disabled");
+        jQuery("#mainbar_nukeit").removeClass("disabled");
         <?php endif; ?>
     }
     //clear font finder value
@@ -229,27 +244,7 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
         jQuery(itemname).remove();
         jQuery(cssname).remove();
     });
-    //set up the autocomplete form
-    var availableFonts = [<?php echo $autocomplete; ?>];
-    jQuery("#fontfinder").autocomplete({ 
-        source: availableFonts, 
-        select: function(e,ui) {
-            var selectedObj = ui.item;
-            var data = { action: 'wp_googlefontmgr_setfonts', font: selectedObj.value };
-        	jQuery.post(ajaxurl, data, function(response) {
-        		jQuery("#response-div").html(response);
-        	});
-        }
-    });
-    //set the available font count
-    jQuery("span.countfonts").html(<?php echo count($font_list['items']); ?>);
-    <?php if($fontdata && $fontselectdrop): ?>
-    //add font items to font select dropdown
-    var timerId = setTimeout(function() { 
-        jQuery("ul.fontSelectUl").prepend('<?php echo $fontselectdrop; ?>');
-    }, 2000);
-    <?php endif; ?>
-    <?php if(!$google_api_key): ?>
+    <?php if(!$google_api_key || !googlefontmgr_check_api($google_api_key)): ?>
     //if google apikey is empty open the settings panel
     var timerId = setTimeout(function() {
         jQuery("#wp_googlefontmgr_options").hide(); 
@@ -257,6 +252,26 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
         jQuery("#mainbar_settings").addClass("active");
     }, 1000);
     <?php else: ?>
+        //set up the autocomplete form
+        var availableFonts = [<?php echo $autocomplete; ?>];
+        jQuery("#fontfinder").autocomplete({ 
+            source: availableFonts, 
+            select: function(e,ui) {
+                var selectedObj = ui.item;
+                var data = { action: 'wp_googlefontmgr_setfonts', font: selectedObj.value };
+            	jQuery.post(ajaxurl, data, function(response) {
+            		jQuery("#response-div").html(response);
+            	});
+            }
+        });
+        //set the available font count
+        jQuery("span.countfonts").html(<?php echo count($font_list['items']); ?>);
+        <?php if($fontdata && $fontselectdrop): ?>
+        //add font items to font select dropdown
+        var timerId = setTimeout(function() { 
+            jQuery("ul.fontSelectUl").prepend('<?php echo $fontselectdrop; ?>');
+        }, 2000);
+        <?php endif; ?>
         jQuery("#fontfinder").prop("disabled",false);
     <?php endif; ?>
      

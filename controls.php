@@ -7,11 +7,13 @@
  * @abstract: This file contains the sidebar elements and form controls.
  */
  
+global $is_networkactive;
+
 //exit if accessed directly
 if(!defined('ABSPATH')) exit;
  
 //get google api key
-$google_api_key = get_option('wp_googlefontmgr_apikey');
+$google_api_key = wp_googlefonts_getTheKey();
 
 //get current font lists
 $fontdata = get_option("wp_googlefontmgr_fonts");
@@ -30,16 +32,19 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
         <span>Configuration Options &amp; Settings:</span>
     </h3>
     <div class="inside">
-    
         <form id="googleapi" method="post" action="" name="googleapi">
         <div id="wp_googlefontmgr_settings_dialog">
             <p>
                 <label for="material">Google API Developer Key:</label>
-                <p class="small"><em>In order to use the font manager, we need to first connect withyour Google Developer API account. This will enable you to access the Google Fonts API.</em></p>
+                <p class="small"><em>In order to use the font manager, we need to connect with your Google Developer API account. This will enable you to access the Google Fonts API. An Google Developer API key is free and easy to get as long as you have a Gmail account.</em></p>
                 <label>Enter your API Key here:</label>
-                <input type="text" id="wp_googlefontmgr_apikey" name="wp_googlefontmgr_apikey" value="<?php echo $google_api_key; ?>" />
+                <input id="wp_googlefontmgr_apikey" name="wp_googlefontmgr_apikey" value="<?php echo $google_api_key; ?>" <?php if($is_networkactive): ?>type="password" disabled="disabled"<?php else: ?>type="text"<?php endif; ?> />
                 <br />
+                <?php if($is_networkactive): ?>
+                <strong id="browsefonts">API set globally by Network Admin.</strong>
+                <?php else: ?>
                 <a id="browsefonts" target='_blank' href='https://code.google.com/apis/console'>Click Here to Get Your Google API Key!</a>
+                <?php endif; ?>
             </p>
         </div>
 
@@ -50,7 +55,7 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
         <div id="template_preview_options">
         <p>
             <label for="iosconrols">Visual Editor Options:</label>
-            <p class="small"><em>With these options you are able to enable/disable (enabled by default) font selectors in the visual editor and override template styles.</em></p>
+            <p class="small"><em>With these options you are able to enable/disable font selectors in the visual editor and override template styles (enabled by default).</em></p>
             <div class="iosconrols">
                 <ul>
                     <li id="enable_editorfonts" style="overflow: hidden;" class="ios-switch">
@@ -89,6 +94,8 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
 </div>
 
 <div class="clear"></div>
+
+<?php if($google_api_key && googlefontmgr_check_api($google_api_key)): ?>
 
 <div id="wp_googlefontmgr_options">
 
@@ -148,6 +155,8 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
                             //get a list of all selected fonts
                             $array = explode(",", $fontdata);
                             foreach($array as $value) {
+                                $value = str_replace('"', "", $value);
+                                $value = str_replace("'", "", $value);
                                 echo '<option value="' .$value. '">' .$value. '</option>';
                             } 
                         }
@@ -159,6 +168,8 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
                             //get a list of all selected fonts
                             $array = explode(",", $fontdata);
                             foreach($array as $value) {
+                                $value = str_replace('"', "", $value);
+                                $value = str_replace("'", "", $value);
                                 echo '<option value="font-family:\'' .$value. '\'">' .$value. '</option>';
                             } 
                         }
@@ -190,6 +201,8 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
 
 <div class="clear"></div>
 
+<?php endif; ?>
+
 <div id="wp_googlefontmgr_helpfiles" style="display: none;">
 
     <div id="wp_googlefontmgr_selector" class="postbox">
@@ -206,7 +219,7 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
                         <p class="small">Getting your Google API key.</p>
                         
                         <p>
-                            <iframe width="235" height="176" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="//player.vimeo.com/video/83986921" width="235" height="132" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </p>
                         
                         <div class="clear"></div>
@@ -214,7 +227,7 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
                         <p class="small">Using this Plugin.</p>
                         
                         <p>
-                            <iframe width="235" height="176" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="//player.vimeo.com/video/83987309" width="235" height="132" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </p>
                         
                     </div>
@@ -229,6 +242,8 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
             <div class="clear"></div>
         </div>
     </div>
+    
+    <?php if($google_api_key && googlefontmgr_check_api($google_api_key)): ?>
     
     <div id="links_resources" class="postbox">
         <h3>
@@ -259,6 +274,8 @@ $styledefaults = get_option("wp_googlefontmgr_styledefaults", 0);
     
         </div>
     </div>
+    
+    <?php endif; ?>
     
 </div>
 
@@ -303,6 +320,13 @@ jQuery(document).ready(function() {
             
         }
     });
+    
+    <?php if(!$google_api_key || !googlefontmgr_check_api($google_api_key)): ?>
+    jQuery("#wp_googlefontmgr_settings").fadeIn();
+    jQuery("#mainbar_settings").addClass("active");
+    jQuery("#mainbar_apply").addClass("disabled");
+    jQuery("#mainbar_nukeit").addClass("disabled");
+    <?php endif; ?>
     
 });
 </script>

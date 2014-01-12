@@ -272,6 +272,12 @@ function resetEmptyDropdowns(){
         if(!jQuery(this).val()) { jQuery(this).val("default"); }
     });
 }
+//manually close view panel
+//font viewer slide function
+function closePanel() {
+    jQuery("#viewertab").parent().animate({right:'-720px'}, {queue: false, duration: 800});
+    jQuery("#viewertab").parent().removeClass("open");
+}
 //general jQuery scripts
 jQuery(document).ready(function(){
     //hover text for element options
@@ -370,12 +376,16 @@ jQuery(document).ready(function(){
     jQuery("#mainbar_nukeit").on("click", function(e){
         e.preventDefault();
         e.stopPropagation();
-        jQuery("#rusureok #confirm").attr("data-action", "nukeIT");
-        jQuery("#rusureok p").html("Are you sure you want to remove all of your current font selections? <strong>WARNING! This action cannot be undone.</strong>");
-        jQuery("#confirmation").html(jQuery("#rusureok").html());
-        jQuery("#notice-overlay").fadeIn("slow");
-        jQuery("#confirmation").fadeIn("slow");
-        jQuery("#confirm").focus();
+        if(jQuery(this).hasClass("disabled")){
+            return false;
+        } else {
+            jQuery("#rusureok #confirm").attr("data-action", "nukeIT");
+            jQuery("#rusureok p").html("Are you sure you want to remove all of your current font selections? <strong>WARNING! This action cannot be undone.</strong>");
+            jQuery("#confirmation").html(jQuery("#rusureok").html());
+            jQuery("#notice-overlay").fadeIn("slow");
+            jQuery("#confirmation").fadeIn("slow");
+            jQuery("#confirm").focus();
+        }
     });
     //font selector select box
     jQuery("#font_inspector_select").on("change", function(e){
@@ -403,22 +413,26 @@ jQuery(document).ready(function(){
     jQuery("#mainbar_apply").on("click", function(e){
         e.preventDefault();
         e.stopPropagation();
-        jQuery(".mainbar-button").removeClass("active");
-        if(jQuery("#default_styles_tab").hasClass("selected")){
-            jQuery(this).removeClass("active");
-            jQuery(".fonttabs, .tabsbox").removeClass("selected");
-            jQuery("#default_styles_tab, #styles_tab").removeClass("selected"); 
-            jQuery("#selected_fonts_tab, #selector_tab").addClass("selected"); 
-            jQuery("#wp_googlefontmgr_helpfiles, #wp_googlefontmgr_settings").hide();
-            jQuery("#wp_googlefontmgr_options").fadeIn("slow");
+        if(jQuery(this).hasClass("disabled")){
+            return false;
         } else {
-            jQuery(this).addClass("active");
-            jQuery(".fonttabs, .tabsbox").removeClass("selected");
-            jQuery("#default_styles_tab, #styles_tab").addClass("selected"); 
-            jQuery("#wp_googlefontmgr_helpfiles, #wp_googlefontmgr_settings").hide();
-            jQuery("#wp_googlefontmgr_options").fadeIn("slow");
+            jQuery(".mainbar-button").removeClass("active");
+            if(jQuery("#default_styles_tab").hasClass("selected")){
+                jQuery(this).removeClass("active");
+                jQuery(".fonttabs, .tabsbox").removeClass("selected");
+                jQuery("#default_styles_tab, #styles_tab").removeClass("selected"); 
+                jQuery("#selected_fonts_tab, #selector_tab").addClass("selected"); 
+                jQuery("#wp_googlefontmgr_helpfiles, #wp_googlefontmgr_settings").hide();
+                jQuery("#wp_googlefontmgr_options").fadeIn("slow");
+            } else {
+                jQuery(this).addClass("active");
+                jQuery(".fonttabs, .tabsbox").removeClass("selected");
+                jQuery("#default_styles_tab, #styles_tab").addClass("selected"); 
+                jQuery("#wp_googlefontmgr_helpfiles, #wp_googlefontmgr_settings").hide();
+                jQuery("#wp_googlefontmgr_options").fadeIn("slow");
+            }
+            if(jQuery("#google_font_stylechange").val() == 0) { setCurrentStyles(); }
         }
-        if(jQuery("#google_font_stylechange").val() == 0) { setCurrentStyles(); }
     });
     //handle documentation selector
     jQuery("#mainbar_help").on("click", function(e){
@@ -546,5 +560,5 @@ jQuery(document).ready(function(){
         }
     });
     //on load, fade in content
-    var timerId = setTimeout(function () { jQuery("#poststuff").fadeIn(); }, 500);
+    var timerId = setTimeout(function () { jQuery("#poststuff").fadeIn(); }, 750);
 });

@@ -2,20 +2,22 @@
 
 Contributors: opportunex
 Donate Link: http://butlerconsulting.com/work/plugins/google-font-manager/
-Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet
+Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
 Requires at least: 3.1
 Tested up to: 3.8
-Stable tag: 1.0
+Stable tag: 1.01
 License: GPLv3 (or higher)
 
-Easily add Google fonts to your WordPress website. With multiple use options, it is perfect for regular and advanced WordPress users alike.
+Easily add Google fonts to your WordPress website. With multiple options, this is perfect for regular and advanced WordPress users alike.
 
 
 == Description ==
 
-**The Google Font Manager plugin was written to help you quickly and easily add Google fonts to your WordPress website. Designed for both regular and advanced WordPress users in mind.** 
+**The Google Font Manager plugin was written to help you quickly and easily add Google fonts to your WordPress website. Designed for both regular and advanced WordPress users in mind, this is the perfect plugin to expand your website typography.** 
 
-With minimal overhead, it will not add any unnecessary "bloat" to your site, adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding Google fonts to your website.
+[vimeo http://vimeo.com/83984940]
+
+With minimal overhead, it will not add any unnecessary "bloat" to your site; adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding and managing Google fonts.
 
 **Some of the features:**
 
@@ -27,8 +29,9 @@ With minimal overhead, it will not add any unnecessary "bloat" to your site, add
 * AJAX-powered, no screen refreshes! 
 * Clean and fresh UI and UX design
 * Fully responsive Admin (as of WP 3.8)
-* Light-Weight turn on and off options
+* Light-Weight... turn on and off options
 * Resources only loaded in WP Admin when needed
+* Multisite compatible with single API key
 
 If you have any problems with the plugin after reading the FAQ, Other Notes, etc. please visit the [support forums](http://wordpress.org/support/plugin/google-font-manager/).
 
@@ -36,14 +39,14 @@ If you have any problems with the plugin after reading the FAQ, Other Notes, etc
 
 Sorry, no translations available at this time.  We will be working on that for the next upgrade. If you'd like to contribute a translation, please let us know on the [support forums](http://wordpress.org/support/plugin/google-font-manager/).
 
-* American English - Default... Also supports Canadian, British, Australian and a few others (that's a joke)
+* American English - Default... Also supports Canadian, British, Scottish, Irish, Australian and a few others (that's a joke)
 
 
 == Installation ==
 
-1. Upload this plugin to the `/wp-content/plugins/` directory and unzip it, or simply upload the zip file within your wordpress installation.
+1. Upload this plugin to the `/wp-content/plugins/` directory and unzip it, or simply upload the zip file within your WordPress installation.
 
-2. Activate the plugin through the 'Plugins' menu in WordPress.
+2. Activate the plugin through the 'Plugins' menu in WordPress. Or (within a multisite network) you may now Network Activate it. 
 
 3. Click on "Google Font Manager" in your admin toolbar, located under the settings tab.
 
@@ -54,16 +57,16 @@ Sorry, no translations available at this time.  We will be working on that for t
 
 == Upgrade Notice ==
 
-Since this is the first release version, there are no upgrade notices.
+The current update (version 1.01) has critical fixes for the tinyMCE toolbar as well as major updates for multisite network activation. Please update now!
 
 
 == Notes & Known Issues ==
 
-This plugin has been developed for modern browsers and makes liberal use of HTML5 data attributes and may not function as intended in older web browsers... **YOU HAVE BEEN WARNED!** 
+This plugin has been developed for modern browsers and makes liberal use of HTML5 data attributes. It may not function as intended in older web browsers... **YOU HAVE BEEN WARNED!** 
 
-As this plugin was developed for internal training purposes to teach new programmers how to write plugins "our way", we have full documentation available.  Although a languages folder exists in the plugin (google-font-manager/lang) no translations have been added to this version. As this plugin is used as a training tool, we are also utilizing it for producing an instructional video on how to add translations to your WordPress plugins.  Once that tutorial is complete, we will update this plugin with some added translations.  
+As this plugin was developed for internal training purposes to teach new programmers how to write plugins "our way", we have full documentation available.  Although a languages folder exists in the plugin (google-font-manager/lang) no translations have been added to this version. As a training tool, we will also be utilizing it for producing an instructional video on how to add translations to your WordPress plugins.  Once that tutorial is complete, we will update the plugin with some added translations.  
 
-Finally, and along the same lines, some of the "responsivness" in the UI may seem lacking in this initial version.  This is for the same reason.  We will be adding a tutorial on how to add responsive conditionals and will update the plugin when that is complete.  In the meantime, have fun with the plugin and let us know what you think!
+Finally, and along the same lines, some of the "responsivness" in the UI may seem lacking in the initial release.  This is for the same reason.  We'll be adding a tutorial on "How to Add Responsive Conditionals to your Plugins" and will update the plugin when that is complete.  In the meantime, have fun with it and let us know what you think!
 
 
 == Screenshots ==
@@ -92,23 +95,29 @@ You will need a Google API key to make use of this plugin. Your key is free and 
     5) copy the API key under "Key for browser applications", that's it.
 
 = Why don't my changes appear in my site? =
-Once you have selected fonts and added them to your site, you must either add them to your style sheet manually, apply them within your blog post or pages by using the visual editor. Also, make sure you have enabled the "Style Defaults" and apply them to your site elements. 
+Once you have selected fonts and added them to your site, you must either add them to your style sheet manually, or apply them within your blog post or pages by using the visual editor or overriding your themes style sheet by configuring options under the "Default Styles" tab (make sure you have enabled the "Style Defaults" and apply them to your site elements). 
 
 = I have followed the instructions above and my fonts still aren't working. What can I do? =
-If you have done all of the above and you still can't see any changes, you should turn on the "!important" CSS constructor, rebuild your style sheet and refresh your page.  Also, make sure to delete your cache and refresh your page - particularly if you are using a cache plugin.
+If you have done all of the above and you still can't see any changes, you should turn on the "!important" CSS constructor, rebuild your style sheet and refresh your page.  Also, make sure to delete your cache and refresh your page - particularly if you are using a cache plugin. Please note, that not all of your website's styles can be manipulated with the "Default Style" options.  In some cases, you will have to use "inline styles" or CSS to achieve your desired result.  We are only able to provide a basic framework for you with this plugin.
  
 = I am a programmer/designer and I don't need any add-ons. Can I turn them off? =
-Yes.  By default, we assume that you don't know how to code or do not want to.  So, font selection in the visual editor along with web safe fonts is enabled by default.  This plugin allows you to turn off all of these added utilities for applying fonts, under the settings tab.
+Yes.  By default, we assume that you don't know how to code or do not want to.  So, font selection in the visual editor, along with web safe fonts option are enabled by default.  This plugin allows you to turn off all of these added utilities for applying fonts. You may do so under the settings tab.
+
+= I am running a multisite network. Can I "network enable" this plugin and use a single API key? =
+Yes.  As of version 1.01 of the plugin, you are able to activate the plugin for all the sites in your network.  If you do this, you must enter your API key within the Network Admin (under settings) for the plugin to work.
+
+= I have entered my API Key and nothing happens. What do I do? =
+Make sure that your API key is entered into the space provided without any leading or trailing spaces.  Next, you must click the button "Update Configuration" (or "Activate Google API Key Globally" in Network Activation). Unlike many of the other options, which are set via ajax and do not require a page refresh or submit button, setting the API key requires a full form submission to complete.  If you follow these instructions and still have issues, check and make sure that you are using the correct API key ("Key for browser applications" aka "Browser Key").
 
 = I really like how this plugin works and looks. Are you for hire? =
 Yes.  We make a living by doing this sort of thing.  You can learn more about us and what we can do for you by visiting our home page at: http://butlerconsulting.com.
 
-For further instructions and step-by-step instructions you can go here: http://plugins.butlerconsulting.com/docs/google-font-manager/.
+For further information and step-by-step instructions you can go here: http://plugins.butlerconsulting.com/docs/google-font-manager/.
 
 
 == Credits and include files ==
 
-Of course a big "shout out" must be given to Matt Mullenweg and the WordPress team for making the world possible! This plugin makes use of jQuery (jquery.com) along with a few additional jQuery libraries that have been written by others.  Each of these may have their own licenses but all are "Open Source". Some of the icons were used from Windows Icons [Modern UI Icons](http://modernuiicons.com/). Additional resources:
+Of course a big "shout out" must be given to Matt Mullenweg and the WordPress team for making the entire world possible! This plugin makes use of jQuery (jquery.com) along with a few additional JavaScript libraries that have been written by others.  Each of these may have their own licenses, but all are "Open Source". Some of the icons were used from Windows Icons [Modern UI Icons](http://modernuiicons.com/). Additional resources:
 
 jQuery autocomplete provided by http://jqueryui.com, 
 jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/, 
@@ -122,3 +131,12 @@ SpinBox JavaScript widget //code.stephenmorley.org http://code.stephenmorley.org
 
 = 1.0 =
 * Initial release December 28th 2013, Nothing to see here. These are not the droids we're looking for... move along.
+
+= 1.01 =
+* Added multisite support with network admin page to apply API key globally.
+* Fixed tinyMCE toolbar bug that caused other plugin options to be removed.
+* Added "close panel" link to font viewer (some did not figure out to click on tab).
+* Added YouTube video links for intro, api tutorial and plugin tutorial.
+* Changed deactivation hook to register_uninstall_hook for settings removal.
+* Updated readme.txt and help files for better readability.
+* Updated the FAQ with multisite answers and more.
