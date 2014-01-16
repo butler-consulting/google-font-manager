@@ -255,7 +255,7 @@ function setCurrentStyles() {
             });
     });
     
-    //update clode id for spinboxes
+    //update clone id for spinboxes
     jQuery(".checkboxy.option.spinbox").each(function(){
         var thisid= jQuery(this).find("span").attr("data-name") + "-" + jQuery(this).parent().closest("li").attr("id");
         if(!jQuery(thisid).hasClass("spinBox")) {

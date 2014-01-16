@@ -5,7 +5,7 @@ Donate Link: http://butlerconsulting.com/work/plugins/google-font-manager/
 Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
 Requires at least: 3.1
 Tested up to: 3.8
-Stable tag: 1.01
+Stable tag: 1.02
 License: GPLv3 (or higher)
 
 Easily add Google fonts to your WordPress website. With multiple options, this is perfect for regular and advanced WordPress users alike.
@@ -140,3 +140,6 @@ SpinBox JavaScript widget //code.stephenmorley.org http://code.stephenmorley.org
 * Changed deactivation hook to register_uninstall_hook for settings removal.
 * Updated readme.txt and help files for better readability.
 * Updated the FAQ with multisite answers and more.
+
+= 1.02 =
+* Commented out PHP error reporting what was causing other plugins and issues to be displayed in admin.
