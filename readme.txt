@@ -142,4 +142,5 @@ SpinBox JavaScript widget //code.stephenmorley.org http://code.stephenmorley.org
 * Updated the FAQ with multisite answers and more.
 
 = 1.02 =
-* Commented out PHP error reporting what was causing other plugins and issues to be displayed in admin.
+* Commented out PHP error reporting (was causing error messages from other plugins and issues to be displayed in admin).
+
