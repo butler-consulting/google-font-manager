@@ -57,7 +57,7 @@ Sorry, no translations available at this time.  We will be working on that for t
 
 == Upgrade Notice ==
 
-The current update (version 1.01) has critical fixes for the tinyMCE toolbar as well as major updates for multisite network activation. Please update now!
+The current update (version 1.03) is a non-critical update with minor updates to documentation only.
 
 
 == Notes & Known Issues ==
@@ -109,6 +109,8 @@ Yes.  As of version 1.01 of the plugin, you are able to activate the plugin for 
 = I have entered my API Key and nothing happens. What do I do? =
 Make sure that your API key is entered into the space provided without any leading or trailing spaces.  Next, you must click the button "Update Configuration" (or "Activate Google API Key Globally" in Network Activation). Unlike many of the other options, which are set via ajax and do not require a page refresh or submit button, setting the API key requires a full form submission to complete.  If you follow these instructions and still have issues, check and make sure that you are using the correct API key ("Key for browser applications" aka "Browser Key").
 
+Apparently, with some server configurations the curl module in PHP may be required to validate the API calls.  For more information on this you can read the posts in this support thread: http://wordpress.org/support/topic/api-wont-load-1?replies=8 
+
 = I really like how this plugin works and looks. Are you for hire? =
 Yes.  We make a living by doing this sort of thing.  You can learn more about us and what we can do for you by visiting our home page at: http://butlerconsulting.com.
 
@@ -144,3 +146,5 @@ SpinBox JavaScript widget //code.stephenmorley.org http://code.stephenmorley.org
 = 1.02 =
 * Commented out PHP error reporting (was causing error messages from other plugins and issues to be displayed in admin).
 
+= 1.03 =
+* Updated tutorial videos and FAQ
