@@ -17,7 +17,7 @@ $font = urlencode($_POST["font"]);
 //get current font lists
 $fontdata = get_option("wp_googlefontmgr_fonts");
 
-$test_data = wp_remote_get("http://fonts.googleapis.com/css?family=$font");
+$test_data = wp_remote_get("https://fonts.googleapis.com/css?family=$font");
 
 //test font to make sure it exists
 if($test_data['response']['code'] !== 200 && !isset($_POST["remove"])){
