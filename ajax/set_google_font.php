@@ -94,7 +94,7 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
     if($fontdata && !isset($_POST["remove"]) && !$errormessage) {
         //load temporary font stylesheet
         $cssname = "wp-fontster-" .strtolower(str_replace("-", " ", $font));
-        echo 'var stylesheet = "<link rel=\'stylesheet\' id=\'' .$cssname. '\'  href=\'http://fonts.googleapis.com/css?family=' .urlencode($font). '\' type=\'text/css\' media=\'all\' />";';
+        echo 'var stylesheet = "<link rel=\'stylesheet\' id=\'' .$cssname. '\'  href=\'//fonts.googleapis.com/css?family=' .urlencode($font). '\' type=\'text/css\' media=\'all\' />";';
         echo 'var fontitem = \'<div id="listfont_' .strtolower(str_replace(" ", "-", $font)). '" class="fontlist-item" data-font="' .$font. '"><p class="heading" data-font="' .$font. '">' .urldecode($font). '<span class="delfont"></span></p><h2 style=\"font-family:' .$font. '\">Grumpy wizards make toxic brew for the evil Queen and Jack.</h2></div>\';';
         echo 'var listitem = "<span class=\'fonlist ' .strtolower(str_replace(" ", "-", $font)). '\' data-font=\'' .$font. '\'>' .$font. '<span class=\'delfont\'></span></span>";'; 
         echo 'var formitem = "<option value=\'' .$font. '\'>' .$font. '</option>";';

@@ -22,7 +22,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 	<meta name="author" content="Thomas Butler" />
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=<?php echo urlencode($fontface); ?><?php if(isset($_GET["variant"])) { echo ":" .urlencode($variant); } ?>" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=<?php echo urlencode($fontface); ?><?php if(isset($_GET["variant"])) { echo ":" .urlencode($variant); } ?>" />
     <style>
     body {
         font-family: '<?php echo urldecode($fontface); ?>';

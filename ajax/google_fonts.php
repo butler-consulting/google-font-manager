@@ -82,7 +82,7 @@ $fontdata = get_option("wp_googlefontmgr_fonts");
         $array = explode(",", $fontdata);
         foreach($array as $value) {
             $cssname = "google-font-manager-" .strtolower(str_replace(" ", "-", $value));
-            wp_enqueue_style($cssname,'http://fonts.googleapis.com/css?family='.$value);
+            wp_enqueue_style($cssname,'//fonts.googleapis.com/css?family='.$value);
             $fontselectdrop .='<li class="' .strtolower(str_replace(" ", "-", $value)). '" style="font-family: ' .$value. ';">' .$value. '</li>';
         }
     }

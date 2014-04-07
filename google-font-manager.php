@@ -205,7 +205,7 @@ function wp_googlefontmgr_formatTinyMCE($init) {
             $array = explode(",", $fontdata);
             foreach($array as $value) {
                 $myfontlist .=sprintf(_('%s=%s,'), $value, $value);
-                $mycsslist .= "http://fonts.googleapis.com/css?family=" .urlencode($value). ",";
+                $mycsslist .= "//fonts.googleapis.com/css?family=" .urlencode($value). ",";
             }
         }
         //check if websafe fonts are to be loaded
@@ -233,7 +233,7 @@ function wp_googlefontmgr_setscripts(){
         $array = explode(",", $fontdata);
         foreach($array as $value) {
             $cssname = "google-font-manager-" .strtolower(str_replace(" ", "-", $value));
-            wp_enqueue_style($cssname,'http://fonts.googleapis.com/css?family='.$value);
+            wp_enqueue_style($cssname,'//fonts.googleapis.com/css?family='.$value);
             $fontselectdrop .='<li class="' .strtolower(str_replace(" ", "-", $value)). '" style="font-family: ' .$value. ';">' .$value. '</li>';
         }
     }
