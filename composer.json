@@ -1,0 +1,20 @@
+{
+    "name": "rumpled/google-font-manager",
+    "version": "1.0.4",
+    "type": "wordpress-plugin",
+    "description": "Manage Google web fonts for your WordPress website.",
+    "keywords": ["wordpress", "google", "font"],
+    "homepage": "https://github.com/rumpled/google-font-manager",
+    "license" : "GPL-3.0+",
+    "authors" : [
+        {
+            "name": "Thomas Butler",
+            "homepage": "http://butlerconsulting.com/"
+        }
+    ],
+    "support": {
+        "forum": "http://wordpress.org/support/plugin/google-font-manager",
+        "issues": "https://github.com/butler-consulting/google-font-manager/issues",
+        "source": "https://github.com/butler-consulting/google-font-manager"
+    }
+}
