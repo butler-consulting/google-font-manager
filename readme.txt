@@ -1,11 +1,11 @@
 ﻿=== Google Font Manager ===
 
-Contributors: opportunex
+Contributors: opportunex, PremiumWebServices
 Donate Link: http://butlerconsulting.com/work/plugins/google-font-manager/
 Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
 Requires at least: 3.1
-Tested up to: 3.8
-Stable tag: 1.03
+Tested up to: 3.9
+Stable tag: 1.0.4
 License: GPLv3 (or higher)
 
 Easily add Google fonts to your WordPress website. With multiple options, this is perfect for regular and advanced WordPress users alike.
@@ -127,14 +127,14 @@ A modified version of "tipsy tip roller" by jason frame [jason@onehackoranother.
 jQuery.LocalScroll and jQuery.ScrollTo by Ariel Flesler - aflesler(at)gmail(dot)com | http://flesler.blogspot.com, 
 jQuery custom radiobuttons by Tomasz Wójcik (bthlabs.pl) labs@tomekwojcik.pl 
 SpinBox JavaScript widget //code.stephenmorley.org http://code.stephenmorley.org/javascript/spin-box-widget/
-
+Special thanks to Richard Bonk from PremiumWebServices http://premiumwebservices.co.uk for his TinyMCE contribution in updating to WP v3.9
 
 == Changelog ==
 
 = 1.0 =
 * Initial release December 28th 2013, Nothing to see here. These are not the droids we're looking for... move along.
 
-= 1.01 =
+= 1.0.1 =
 * Added multisite support with network admin page to apply API key globally.
 * Fixed tinyMCE toolbar bug that caused other plugin options to be removed.
 * Added "close panel" link to font viewer (some did not figure out to click on tab).
@@ -143,8 +143,13 @@ SpinBox JavaScript widget //code.stephenmorley.org http://code.stephenmorley.org
 * Updated readme.txt and help files for better readability.
 * Updated the FAQ with multisite answers and more.
 
-= 1.02 =
+= 1.0.2 =
 * Commented out PHP error reporting (was causing error messages from other plugins and issues to be displayed in admin).
 
-= 1.03 =
+= 1.0.3 =
 * Updated tutorial videos and FAQ
+
+= 1.0.4 =
+* Updated TinyMCE toolbar code for compatibility with WordPress Version 3.9.  Special thanks to Richand Bonk from PremiumWebServices (http://premiumwebservices.co.uk) for his contribution in fixing this issue, as the author was tied up n another project.  Thanks Richard!!
+
+
