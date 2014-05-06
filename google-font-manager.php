@@ -3,7 +3,7 @@
 Plugin Name: Google Font Manager
 Plugin URI: http://butlerconsulting.com/work/plugins/google-font-manager/
 Description: Adds a library of selected Google Fonts to your WordPress site with a backend font selection and preview system.
-Version: 1.0.4
+Version: 1.1.0
 Author: Thomas S. Butler
 Author URI: http://butlerconsulting.com/
 Text Domain: google-font-manager
@@ -185,6 +185,41 @@ function wp_googlefontmgr_setstyle_callback() {
 }
 add_action('wp_ajax_wp_googlefontmgr_setstyle', 'wp_googlefontmgr_setstyle_callback');
 
+//check if visual editor font options enabled
+$editorfonts = get_option("wp_googlefontmgr_editorfonts", 1);   
+
+//add font selection to TinyMCE (depricated since 3.9)
+function wp_googlefontmgr_formatOLDTinyMCE($init) {
+    
+    if($editorfonts) {
+        if($websafefonts) {  
+            //get websafefont list
+            $safefontlist = 'Arial=Arial,Helvetica,sans-serif,Arial Black=Arial Black,Gadget,sans-serif,Comic Sans=Comic Sans MS,Comic Sans MS,cursive,Courier New=Courier New,Courier New,Courier,monospace,Georgia=Georgia,Georgia,serif,';
+            $safefontlist .= 'Impact=Impact,Charcoal,sans-serif,Lucida Console=Lucida Console,Monaco,monospace,Lucida Sans Unicode=Lucida Sans Unicode,Lucida Grande,sans-serif,Palatino Linotype=Palatino Linotype,Book Antiqua,Palatino,serif,';
+            $safefontlist .= 'Tahoma=Tahoma,Geneva,sans-serif,Times New Roman=Times New Roman,Times,serif,Trebuchet MS=Trebuchet MS,Helvetica,sans-serif,Verdana=Verdana,Geneva,sans-serif,Gill Sans=Gill Sans,Geneva,sans-serif,';
+        }
+        $fontdata = get_option("wp_googlefontmgr_fonts");
+        //get the google font list
+        if($fontdata) {
+            //load fonts for use in plugin
+            $array = explode(",", $fontdata);
+            foreach($array as $value) {
+                $myfontlist .=sprintf(_('%s=%s,'), $value, $value);
+                $mycsslist .= "http://fonts.googleapis.com/css?family=" .urlencode($value). ",";
+            }
+        }
+        //check if websafe fonts are to be loaded
+        if($websafefonts){
+            $myfontlist = $myfontlist. $safefontlist;
+        }
+        $init['content_css']=get_template_directory_uri() . "/editor-style.css";
+        $init['content_css']=rtrim($mycsslist,',');
+        $init['theme_advanced_buttons1_add_before'] = 'formatselect,fontselect';
+        $init['theme_advanced_fonts'] = rtrim($myfontlist,',');
+        return $init;
+    }
+}
+
 //add font selection to TinyMCE
 function wp_googlefontmgr_formatTinyMCE($init) {
     //get option settings
@@ -218,9 +253,14 @@ function wp_googlefontmgr_formatTinyMCE($init) {
         return $init;
     }
 }
-//check if editor fonts are enabled, add filter if they are
-$editorfonts = get_option("wp_googlefontmgr_editorfonts", 1);    
-if($editorfonts) { add_filter('tiny_mce_before_init', 'wp_googlefontmgr_formatTinyMCE'); }
+//check if editor fonts are enabled, add filter if they are 
+if($editorfonts) { 
+    if ( version_compare($wp_version, '3.9', '>=') ) {
+        add_filter('tiny_mce_before_init', 'wp_googlefontmgr_formatTinyMCE');
+    } else {
+        add_filter('tiny_mce_before_init', 'wp_googlefontmgr_formatOLDTinyMCE');
+    } 
+}
 
 // Enable font size & font family selects in the editor - added by Richard Bonk
 if ( ! function_exists( 'wpex_mce_buttons' ) ) {
@@ -230,29 +270,31 @@ if ( ! function_exists( 'wpex_mce_buttons' ) ) {
 		return $buttons;
 	}
 }
-add_filter( 'mce_buttons_2', 'wpex_mce_buttons' );
+if ( version_compare($wp_version, '3.9', '>=') && $editorfonts) {
+    add_filter( 'mce_buttons_2', 'wpex_mce_buttons' );
+}
+
 
 // Add Google Scripts for use with the editor - added by Richard Bonk
 // not sure this part is really necessary, but added it just in case
 if ( ! function_exists( 'wpex_mce_google_fonts_styles' ) ) {
 	function wpex_mce_google_fonts_styles() {
 		$mycsslist = "";
-		$editorfonts = get_option("wp_googlefontmgr_editorfonts", 1);
-		if($editorfonts) {
-			$fontdata = get_option("wp_googlefontmgr_fonts");
-			//get the google font list
-			if($fontdata) {
-				//load fonts for use in plugin
-				$array = explode(",", $fontdata);
-				foreach($array as $value) {
-					$mycsslist = "http://fonts.googleapis.com/css?family=".urlencode($value);
-					add_editor_style( str_replace( ',', '%2C', $mycsslist ) );
-				}
+		$fontdata = get_option("wp_googlefontmgr_fonts");
+		//get the google font list
+		if($fontdata) {
+			//load fonts for use in plugin
+			$array = explode(",", $fontdata);
+			foreach($array as $value) {
+				$mycsslist = "http://fonts.googleapis.com/css?family=".urlencode($value);
+				add_editor_style( str_replace( ',', '%2C', $mycsslist ) );
 			}
-		}   
+		}  
 	}
 }
-add_action( 'init', 'wpex_mce_google_fonts_styles' );
+if ( version_compare($wp_version, '3.9', '>=') && $editorfonts) {
+    add_action( 'init', 'wpex_mce_google_fonts_styles' );
+}
 
 //add selected fonts on public side
 function wp_googlefontmgr_setscripts(){

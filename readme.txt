@@ -5,7 +5,7 @@ Donate Link: http://butlerconsulting.com/work/plugins/google-font-manager/
 Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
 Requires at least: 3.1
 Tested up to: 3.9
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 License: GPLv3 (or higher)
 
 Easily add Google fonts to your WordPress website. With multiple options, this is perfect for regular and advanced WordPress users alike.
@@ -151,5 +151,9 @@ Special thanks to Richard Bonk from PremiumWebServices http://premiumwebservices
 
 = 1.0.4 =
 * Updated TinyMCE toolbar code for compatibility with WordPress Version 3.9.  Special thanks to Richand Bonk from PremiumWebServices (http://premiumwebservices.co.uk) for his contribution in fixing this issue, as the author was tied up n another project.  Thanks Richard!!
+
+= 1.1.0 =
+* Updated version numbering to be in sync with other plugins.
+* Added "backwards compatibility" for WordPress prior to Version 3.9.
 
 
