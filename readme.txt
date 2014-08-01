@@ -5,7 +5,7 @@ Donate Link: http://butlerconsulting.com/work/plugins/google-font-manager/
 Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
 Requires at least: 3.1
 Tested up to: 3.9
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3 (or higher)
 
 Easily add Google fonts to your WordPress website. With multiple options, this is perfect for regular and advanced WordPress users alike.
@@ -66,7 +66,7 @@ This plugin has been developed for modern browsers and makes liberal use of HTML
 
 As this plugin was developed for internal training purposes to teach new programmers how to write plugins "our way", we have full documentation available.  Although a languages folder exists in the plugin (google-font-manager/lang) no translations have been added to this version. As a training tool, we will also be utilizing it for producing an instructional video on how to add translations to your WordPress plugins.  Once that tutorial is complete, we will update the plugin with some added translations.  
 
-Finally, and along the same lines, some of the "responsivness" in the UI may seem lacking in the initial release.  This is for the same reason.  We'll be adding a tutorial on "How to Add Responsive Conditionals to your Plugins" and will update the plugin when that is complete.  In the meantime, have fun with it and let us know what you think!
+Finally, and along the same lines, some of the "responsiveness" in the UI may seem lacking in the initial release.  This is for the same reason.  We'll be adding a tutorial on "How to Add Responsive Conditionals to your Plugins" and will update the plugin when that is complete.  In the meantime, have fun with it and let us know what you think!
 
 
 == Screenshots ==
@@ -104,7 +104,7 @@ If you have done all of the above and you still can't see any changes, you shoul
 Yes.  By default, we assume that you don't know how to code or do not want to.  So, font selection in the visual editor, along with web safe fonts option are enabled by default.  This plugin allows you to turn off all of these added utilities for applying fonts. You may do so under the settings tab.
 
 = I am running a multisite network. Can I "network enable" this plugin and use a single API key? =
-Yes.  As of version 1.01 of the plugin, you are able to activate the plugin for all the sites in your network.  If you do this, you must enter your API key within the Network Admin (under settings) for the plugin to work.
+Yes.  As of version 1.0.1 of the plugin, you are able to activate the plugin for all the sites in your network.  If you do this, you must enter your API key within the Network Admin (under settings) for the plugin to work.
 
 = I have entered my API Key and nothing happens. What do I do? =
 Make sure that your API key is entered into the space provided without any leading or trailing spaces.  Next, you must click the button "Update Configuration" (or "Activate Google API Key Globally" in Network Activation). Unlike many of the other options, which are set via ajax and do not require a page refresh or submit button, setting the API key requires a full form submission to complete.  If you follow these instructions and still have issues, check and make sure that you are using the correct API key ("Key for browser applications" aka "Browser Key").
@@ -123,7 +123,7 @@ Of course a big "shout out" must be given to Matt Mullenweg and the WordPress te
 
 jQuery autocomplete provided by http://jqueryui.com, 
 jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/, 
-A modified version of "tipsy tip roller" by jason frame [jason@onehackoranother.com] was added to the main jQuery file,
+A modified version of "tipsy tip roller" by Jason Frame [jason@onehackoranother.com] was added to the main jQuery file,
 jQuery.LocalScroll and jQuery.ScrollTo by Ariel Flesler - aflesler(at)gmail(dot)com | http://flesler.blogspot.com, 
 jQuery custom radiobuttons by Tomasz Wójcik (bthlabs.pl) labs@tomekwojcik.pl 
 SpinBox JavaScript widget //code.stephenmorley.org http://code.stephenmorley.org/javascript/spin-box-widget/
@@ -154,6 +154,8 @@ Special thanks to Richard Bonk from PremiumWebServices http://premiumwebservices
 
 = 1.1.0 =
 * Updated version numbering to be in sync with other plugins.
-* Added "backwards compatibility" for WordPress prior to Version 3.9.
+* Added some "backwards compatibility" for WordPress prior to Version 3.9.
 
-
+= 1.1.1 =
+* Added call to wp_version, may cause "headers not sent" errors in some themes.
+* Corrected some spelling errors in readme file.

@@ -3,7 +3,7 @@
 Plugin Name: Google Font Manager
 Plugin URI: http://butlerconsulting.com/work/plugins/google-font-manager/
 Description: Adds a library of selected Google Fonts to your WordPress site with a backend font selection and preview system.
-Version: 1.1.0
+Version: 1.1.1
 Author: Thomas S. Butler
 Author URI: http://butlerconsulting.com/
 Text Domain: google-font-manager
@@ -35,6 +35,8 @@ Text Domain: google-font-manager
 
 //exit if accessed directly
 if(!defined('ABSPATH')) exit;
+
+global $wp_version;
 
 //create text domain and defaults
 function googlefontmgr_textdomain() {
