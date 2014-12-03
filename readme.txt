@@ -4,8 +4,8 @@ Contributors: opportunex, PremiumWebServices
 Donate Link: http://butlerconsulting.com/work/plugins/google-font-manager/
 Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
 Requires at least: 3.1
-Tested up to: 4.0
-Stable tag: 1.1.2
+Tested up to: 4.0.1
+Stable tag: 1.1.3
 License: GPLv3 (or higher)
 
 Easily add Google fonts to your WordPress website. With multiple options, this is perfect for regular and advanced WordPress users alike.
@@ -111,6 +111,8 @@ Make sure that your API key is entered into the space provided without any leadi
 
 Apparently, with some server configurations the curl module in PHP may be required to validate the API calls.  For more information on this you can read the posts in this support thread: http://wordpress.org/support/topic/api-wont-load-1?replies=8 
 
+Thanks to @foundationstestprep who pinted out an error that occurs when a referrer is specified: "I couldn't get the Google Font Manager plugin to accept my Google API until I went back to Google and removed the referrers from the API key. Although I'm certain I had the referring url correct, it wouldn't work until it was removed. If you're having problems with the API key and have a referrer associated with it, try removing it to see if it helps."
+
 = My site is hosted with HostGator and my API key won't load.  What do I do? =
 I have no idea! This has been an ongoing issue for at least one user.  I suspect it has to do with the caching system HostGator forces you to use in their shared hosting environment which is adding a space to the header file.  I have wrestled with that before on HostGator, to no avail.  If you have any ideas or can figure it out, I would be very interested in a solution to this!
 
@@ -168,3 +170,7 @@ Special thanks to Richard Bonk from PremiumWebServices http://premiumwebservices
 * Added the "HostGator FAQ Comment" concerning API failure to load.
 * Added license.txt (GPLv3) to package for consistency.
 * Added icons for WordPress plugin repository... cool!
+
+= 1.1.3 =
+* Tested and updated stable tag for compliance with WordPress 4.0.1
+* Removed http prefix to prevent sites using SSL from blocking fonts due to same origin policy.
