@@ -207,7 +207,7 @@ function wp_googlefontmgr_formatOLDTinyMCE($init) {
             $array = explode(",", $fontdata);
             foreach($array as $value) {
                 $myfontlist .=sprintf(_('%s=%s,'), $value, $value);
-                $mycsslist .= "http://fonts.googleapis.com/css?family=" .urlencode($value). ",";
+                $mycsslist .= "//fonts.googleapis.com/css?family=" .urlencode($value). ",";
             }
         }
         //check if websafe fonts are to be loaded
@@ -288,7 +288,7 @@ if ( ! function_exists( 'wpex_mce_google_fonts_styles' ) ) {
 			//load fonts for use in plugin
 			$array = explode(",", $fontdata);
 			foreach($array as $value) {
-				$mycsslist = "http://fonts.googleapis.com/css?family=".urlencode($value);
+				$mycsslist = "//fonts.googleapis.com/css?family=".urlencode($value);
 				add_editor_style( str_replace( ',', '%2C', $mycsslist ) );
 			}
 		}  
@@ -308,7 +308,7 @@ function wp_googlefontmgr_setscripts(){
         $array = explode(",", $fontdata);
         foreach($array as $value) {
             $cssname = "google-font-manager-" .strtolower(str_replace(" ", "-", $value));
-            wp_enqueue_style($cssname,'http://fonts.googleapis.com/css?family='.$value);
+            wp_enqueue_style($cssname,'//fonts.googleapis.com/css?family='.$value);
             $fontselectdrop .='<li class="' .strtolower(str_replace(" ", "-", $value)). '" style="font-family: ' .$value. ';">' .$value. '</li>';
         }
     }
