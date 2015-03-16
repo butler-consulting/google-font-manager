@@ -2,10 +2,10 @@
 
 Contributors: opportunex, PremiumWebServices
 Donate Link: http://butlerconsulting.com/work/plugins/google-font-manager/
-Tags: fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
+Tags: font, fonts, google, google fonts, manage fonts, add fonts, styles, site style, css, stylesheet, style sheet, typography
 Requires at least: 3.1
-Tested up to: 4.0.1
-Stable tag: 1.1.3
+Tested up to: 4.1.1
+Stable tag: 1.1.4
 License: GPLv3 (or higher)
 
 Easily add Google fonts to your WordPress website. With multiple options, this is perfect for regular and advanced WordPress users alike.
@@ -15,7 +15,7 @@ Easily add Google fonts to your WordPress website. With multiple options, this i
 
 **The Google Font Manager plugin was written to help you quickly and easily add Google fonts to your WordPress website. Designed for both regular and advanced WordPress users in mind, this is the perfect plugin to expand your website typography.** 
 
-[vimeo http://vimeo.com/83984940]
+[vimeo http://vimeo.com/113980706]
 
 With minimal overhead, it will not add any unnecessary "bloat" to your site; adding only what you need according to your settings. You can use this plugin to simply add Google fonts to your site and reference them in your own custom style sheets (if you are using a child theme). Or, if you are not coding your own theme, there are a variety of ways you can use the built-in functions of WordPress to make use of the fonts you add. Either way, it provides the perfect solution for adding and managing Google fonts.
 
@@ -174,3 +174,8 @@ Special thanks to Richard Bonk from PremiumWebServices http://premiumwebservices
 = 1.1.3 =
 * Tested and updated stable tag for compliance with WordPress 4.0.1
 * Removed http prefix to prevent sites using SSL from blocking fonts due to same origin policy.
+
+= 1.1.4 =
+* Tested and updated stable tag for WordPress 4.1.1.
+* Replaced Vimeo file with updated version.
+
